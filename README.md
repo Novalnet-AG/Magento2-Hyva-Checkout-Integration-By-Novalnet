@@ -5,14 +5,14 @@
 
 # About Novalnet Payments
 
-Novalnet AG is a globally recognized full-service payment provider headquartered in Germany, offering a comprehensive payment platform that supports international and local payment methods. With a strong focus on automation, security, and compliance, Novalnet simplifies the entire payment process — from checkout to settlement — for online merchants and marketplaces.
+Novalnet AG is a globally recognized full-service payment provider headquartered in Germany, offering a comprehensive payment platform that supports international and local payment methods. With a strong focus on automation, security, and compliance, Novalnet simplifies the entire payment process - from checkout to settlement - for online merchants and marketplaces.
 
-Key Highlights:
-- Supports over 150 international and local payment methods including credit/debit cards, SEPA direct debit, PayPal, Apple Pay, Google Pay, and more.
-- Fully compliant with PCI DSS, PSD2, and GDPR regulations.
-- Provides automated fraud prevention, risk management, real-time transaction monitoring, and intelligent payment routing.
-- Seamless integration and reporting with automated invoicing, settlement, and reconciliation tools.
-- Trusted by businesses across Europe for secure, scalable, and compliant payment processing.
+## Key Highlights:
+* Supports over 150 international and local payment methods including credit/debit cards, SEPA direct debit, PayPal, Apple Pay, Google Pay, and more.
+* Fully compliant with PCI DSS, PSD2, and GDPR regulations.
+* Provides automated fraud prevention, risk management, real-time transaction monitoring, and intelligent payment routing.
+* Seamless integration and reporting with automated invoicing, settlement, and reconciliation tools.
+* Trusted by businesses across Europe for secure, scalable, and compliant payment processing.
 
 # About this repository
 This repository provides the Novalnet Hyvä Integration module for Magento 2, enabling Novalnet Payment Gateway methods within the Hyvä Checkout plugin.
