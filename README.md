@@ -1,11 +1,11 @@
 <p align="center">
     <img src="https://www.novalnet.de/images/nn-logo-200x65.png" />
 </p>
-<h1 align="center">Magento 2 Hyvä Integration By Novalnet </h1>
+<h1 align="center">Magento 2 Hyvä Checkout Integration By Novalnet </h1>
 
 # About Novalnet Payments
 
-Novalnet AG is a globally recognized full-service payment provider headquartered in Germany, offering a comprehensive payment platform that supports international and local payment methods. With a strong focus on automation, security, and compliance, Novalnet simplifies the entire payment process - from checkout to settlement - for online merchants and marketplaces.
+Novalnet AG <a href="https://www.novalnet.de/"> is a globally recognized full-service payment provider headquartered in Germany, offering a comprehensive payment platform that supports international and local payment methods. With a strong focus on automation, security, and compliance, Novalnet simplifies the entire payment process - from checkout to settlement - for online merchants and marketplaces.
 
 ## Key Highlights:
 * Supports over 150 international and local payment methods including credit/debit cards, SEPA direct debit, PayPal, Apple Pay, Google Pay, and more.
@@ -15,7 +15,7 @@ Novalnet AG is a globally recognized full-service payment provider headquartered
 * Trusted by businesses across Europe for secure, scalable, and compliant payment processing.
 
 # About this repository
-This repository provides the Novalnet Hyvä Integration module for Magento 2, enabling Novalnet Payment Gateway methods within the Hyvä Checkout plugin.
+This repository provides the Novalnet Hyvä Checkout Integration for Magento 2, enabling Novalnet Payment Gateway methods within the Hyvä Checkout plugin.
 
 It requires the following dependencies:
 
