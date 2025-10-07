@@ -3,12 +3,28 @@
 </p>
 <h1 align="center">Magento 2 Hyvä Integration By Novalnet </h1>
 
-This module adds support for the Novalnet Payment Gateway methods to the Hyvä Checkout plugin. It requires the base Novalnet payment Gateway as well as the Hyvä checkout plugin.
+# About Novalnet Payments
+
+Novalnet AG is a globally recognized full-service payment provider headquartered in Germany, offering a comprehensive payment platform that supports international and local payment methods. With a strong focus on automation, security, and compliance, Novalnet simplifies the entire payment process — from checkout to settlement — for online merchants and marketplaces.
+
+Key Highlights:
+- Supports over 150 international and local payment methods including credit/debit cards, SEPA direct debit, PayPal, Apple Pay, Google Pay, and more.
+- Fully compliant with PCI DSS, PSD2, and GDPR regulations.
+- Provides automated fraud prevention, risk management, real-time transaction monitoring, and intelligent payment routing.
+- Seamless integration and reporting with automated invoicing, settlement, and reconciliation tools.
+- Trusted by businesses across Europe for secure, scalable, and compliant payment processing.
+
+# About this repository
+This repository provides the Novalnet Hyvä Integration module for Magento 2, enabling Novalnet Payment Gateway methods within the Hyvä Checkout plugin.
+
+It requires the following dependencies:
+
+- **The base Novalnet Payment Gateway module**
+- **The Hyvä Checkout plugin**
 
 For details on the base functionality of Magento 2 payment gateway. refer to https://github.com/Novalnet-AG/magento2-payment-integration-novalnet
 
 # Requirements
-
 The extension has been tested on a Magento environment with
 
 - PHP 8.1
@@ -16,7 +32,6 @@ The extension has been tested on a Magento environment with
 - PAY. 3.5.2
 - Hyvä Themes 1.2.3
 - Hyvä Checkout 1.1.0
-
 
 # Integrated payment methods
 - Direct Debit SEPA
@@ -47,7 +62,7 @@ The extension has been tested on a Magento environment with
 - TWINT
 
 ## Documentation & Support
-For more information about the Magento 2 Payment Integration by Novalnet, please get in touch with us: <a href="mailto:sales@novalnet.de"> sales@novalnet.de </a> or +49 89 9230683-20<br>
+For more information about the Magento 2 Hyvä Integration by Novalnet, please get in touch with us: <a href="mailto:sales@novalnet.de"> sales@novalnet.de </a> or +49 89 9230683-20<br>
 
 Novalnet AG<br>
 Zahlungsinstitut (ZAG)<br>
