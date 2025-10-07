@@ -26,12 +26,10 @@ For details on the base functionality of Magento 2 payment gateway. refer to htt
 
 # Requirements
 The extension has been tested on a Magento environment with
-
-- PHP 8.1
-- Magento 2.4.6
-- PAY. 3.5.2
-- Hyvä Themes 1.2.3
-- Hyvä Checkout 1.1.0
+* Magento 13.3.2
+* PHP 8.2, 8.3 & 8.4
+* Magento 2.4.6
+* Hyvä Checkout 1.1.3
 
 # Integrated payment methods
 - Direct Debit SEPA
