@@ -5,7 +5,7 @@
 
 # About Novalnet Payments
 
-Novalnet AG <a href="https://www.novalnet.de/"> is a globally recognized full-service payment provider headquartered in Germany, offering a comprehensive payment platform that supports international and local payment methods. With a strong focus on automation, security, and compliance, Novalnet simplifies the entire payment process - from checkout to settlement - for online merchants and marketplaces.
+<a href="https://www.novalnet.de/"> Novalnet </a>is a globally recognized full-service payment provider headquartered in Germany, offering a comprehensive payment platform that supports international and local payment methods. With a strong focus on automation, security, and compliance, Novalnet simplifies the entire payment process - from checkout to settlement - for online merchants and marketplaces.
 
 ## Key Highlights:
 * Supports over 150 international and local payment methods including credit/debit cards, SEPA direct debit, PayPal, Apple Pay, Google Pay, and more.
