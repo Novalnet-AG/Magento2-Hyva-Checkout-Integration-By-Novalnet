@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+* Hyvä Themes - https://hyva.io
+* Copyright © Hyvä Themes 2022-present. All rights reserved.
+* This product is licensed per Magento install
+* See https://hyva.io/license
+*/
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+		<script src="https://cdn.novalnet.de/js/v2/NovalnetUtility.js" src_type="url" />
+		<script src="https://cdn.novalnet.de/js/v3/payment.js" src_type="url" />
+		<script src="https://cdn.novalnet.de/js/pv13/checkout.js" src_type="url" />
+	</head>
+	<body>
+		<referenceContainer name="magewire.plugin.scripts">
+			<block class="Magento\Framework\View\Element\Template" name="checkout.payment.method.novalnetPay" template="Novalnet_HyvaCheckout::component/payment/method/novalnetPay.phtml">
+				<arguments>
+					<argument name="magewire" xsi:type="object">
+						Novalnet\HyvaCheckout\Magewire\Checkout\Payment\Method\NovalnetPay
+					</argument>
+				</arguments>
+			</block>
+		</referenceContainer>
+	</body>
+</page>

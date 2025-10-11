@@ -1,0 +1,249 @@
+<div>
+<?php
+/**
+ * Hyvä Themes - https://hyva.io
+ * Copyright © Hyvä Themes 2022-present. All rights reserved.
+ * This product is licensed per Magento install
+ * See https://hyva.io/license
+ */
+
+/** @var \Novalnet\HyvaCheckout\Magewire\Payment\Method\NovalnetPayments $magewire */
+/** @var \Magento\Framework\View\Element\Template            $block */
+/** @var \Magento\Framework\Escaper                          $escaper */
+/** @var \Hyva\Theme\ViewModel\HyvaCsp                      $hyvaCsp */
+
+?>
+<script>
+    "use strict";
+
+    let paymentFormInstance;
+    let walletData = false;
+    let component = null;
+
+    async function injectNovalnetIframe() {
+
+        component = Magewire.find('<?= $escaper->escapeJs($block->getNameInLayout()) ?>');
+        const nnRadioBtn = document.getElementById("payment-method-novalnetPay");
+
+        if (!nnRadioBtn ||!component ) {
+            return;
+        }
+
+        const radioContainer = nnRadioBtn.parentElement;
+        const textSpan = radioContainer.nextElementSibling;
+
+        if (textSpan?.tagName === "SPAN") {
+            textSpan.remove();
+        }
+
+        radioContainer.style.display = "none";
+        nnRadioBtn.closest("label").style.display = "none";
+
+        await component.call("getIframeUrl");
+        await component.call("getLineItems");
+
+        let iframeSrc = component.get("iframeUrl");
+        let NNSelectedPayment = nnRadioBtn.checked ? component.get("NNSelectedPayment") : '';
+        let lineItems = component.get("lineItems");
+        let showIcons = component.get("showIcons");
+
+        const iframe = document.createElement("iframe");
+        iframe.id = 'novalnetPaymentIFrame';
+        iframe.src = iframeSrc;
+        iframe.className = "mb-2 block";
+        iframe.width = "100%";
+        iframe.style = "padding:0px";
+        iframe.style.border = "none";
+        iframe.setAttribute("wire:ignore", "");
+        iframe.setAttribute("referrerPolicy","origin");
+        iframe.setAttribute("allow", "payment");
+        iframe.setAttribute("tabindex", "0");
+
+        if (!document.getElementById("novalnetPaymentIFrame")) {
+            const novalnetDiv = document.getElementById('payment-method-option-novalnetPay');
+            novalnetDiv.setAttribute("wire:ignore", "");
+            novalnetDiv.appendChild(iframe);
+            novalnetDiv.classList.remove('border-2');
+            hyvaCheckout.loader.start();
+            initNovalnetForm(NNSelectedPayment, lineItems, showIcons);
+        }
+
+    }
+
+    function initNovalnetForm(NNSelectedPayment, lineItems, showIcons) {
+
+        if (typeof NovalnetPaymentForm === "undefined") {
+            return;
+        }
+
+        let paymentFormRequestObj = {
+            iframe: "#novalnetPaymentIFrame",
+            initForm: {
+                styleText: {
+                    logo: {
+                        display: showIcons ? 'block' : 'none',
+                    },
+                },
+                orderInformation: {
+                    lineItems: lineItems
+                },
+                uncheckPayments: true,
+                setWalletPending: document.querySelector(".btn-place-order") ? false : true,
+                checkPayment: NNSelectedPayment || '',
+                showButton: false,
+            },
+        };
+
+        paymentFormInstance ??= new NovalnetPaymentForm();
+        paymentFormInstance.initiate(paymentFormRequestObj);
+        initPaymentFormCallbacks();
+        setTimeout(() => hyvaCheckout.loader.stop(), 1200);
+    }
+
+    [
+        "shipping_address_saved",
+        "billing_address_saved",
+        "coupon_code_applied",
+        "coupon_code_revoked",
+        "shipping_method_selected",
+    ].forEach(evt => {
+        Magewire.on(evt, () => { 
+            hyvaCheckout.loader.start();
+            updateNovalnetForm();
+        });
+    });
+
+    async function updateNovalnetForm() {
+        
+        if (!component) {
+            return;
+        }
+        await component.call("getQuoteDetails");
+        const updatedData = component.get("updatedData");
+
+        paymentFormInstance.updateForm(updatedData, result => {
+            setTimeout(() => hyvaCheckout.loader.stop(), 1200);
+        });
+    }
+
+    function initPaymentFormCallbacks() {
+        paymentFormInstance.selectedPayment((data) => {
+            if (data.payment_details.type) {
+                component.setCurrentPayment(data.payment_details.type);
+                document.getElementById("payment-method-novalnetPay").click();
+                let orderBtn = document.querySelector(".btn-place-order") || document.querySelector(".btn-next");
+                if (data.payment_details.type ==='GOOGLEPAY' || data.payment_details.type === 'APPLEPAY') {
+                    orderBtn.style.display = "none";
+                } else {
+                    orderBtn.style.display = "block";
+                }
+            }
+        });
+
+        paymentFormInstance.walletResponse({
+            onProcessCompletion: async (response) => {
+                if (response.result.status == "SUCCESS") {
+                    await component.setPaymentData(JSON.stringify(response));
+                    walletData = true;
+                    document.querySelector(".btn-place-order") ? document.querySelector(".btn-place-order").click() : document.querySelector(".btn-next").click();
+                    return {
+                        status: "SUCCESS",
+                        statusText: ""
+                    };
+                } else {
+                    return {
+                        status: "FAILURE",
+                        statusText: ""
+                    };
+                }
+            },
+
+        });
+
+        document.getElementById('billing-as-shipping').addEventListener('change', () => {
+            if (document.getElementById('billing-as-shipping').checked) {
+                updateNovalnetForm();
+            }
+        });
+
+        if(document.getElementById('address-list')){
+            document.getElementById('address-list').addEventListener('change', () => {
+                updateNovalnetForm();
+        });
+        }
+
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        window.addEventListener("checkout:step:loaded", (e) => {
+            if (e.detail.route === "payment" || e.detail.route === "onepage") {
+                injectNovalnetIframe();
+            }
+        });
+
+    });
+
+    window.addEventListener("checkout:payment:method-activate", (event) => {
+        const paymentMethod = event?.detail?.method;
+
+        if (paymentMethod !== "novalnetPay") {
+            paymentFormInstance?.uncheckPayment();
+            let orderBtn = document.querySelector(".btn-place-order") || document.querySelector(".btn-next");
+
+            if (orderBtn) {
+                orderBtn.style.display = "block";
+            }
+            return;
+        }
+
+        const wrapper = document.getElementById('payment-method-option-novalnetPay');
+        if (wrapper) {
+            wrapper.classList.remove('border-primary');
+            wrapper.classList.remove('bg-primary');
+        }
+
+        hyvaCheckout.payment.activate(paymentMethod, {
+            
+            async validate() {
+
+                const radio = document.getElementById('payment-method-novalnetPay');
+                    if (!radio || !radio.checked) {
+                        return true;
+                    }
+
+                try {
+                    const response = await new Promise((resolve) => {
+                        paymentFormInstance.getMPaymentResponse((res) => {
+                            resolve(res);
+                        });
+                        paymentFormInstance.getMPaymentRequest();
+                    });
+
+                    if (walletData && (response.payment_details.type ==='GOOGLEPAY' || response.payment_details.type === 'APPLEPAY')) {
+                       return true;
+                    }
+
+                    if (response.result.status !== "SUCCESS") {
+                        hyvaCheckout.payment.dispatchExceptionMessage(
+                            response.result.message
+                        );
+                        return false;
+                    }
+                    if (!component || typeof component.setPaymentData !== "function") {
+                        return false;
+                    }
+
+                    await component.setPaymentData(JSON.stringify(response));
+                    return true;
+
+                } catch (err) {
+                    console.warn("Error in validate():", err);
+                    return false;
+                }
+            },
+        });
+    });
+</script>
+<?php $hyvaCsp->registerInlineScript(); ?>
+
+</div>
