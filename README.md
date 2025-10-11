@@ -60,6 +60,26 @@ The extension has been tested on a Magento environment with
 - Payconiq
 - TWINT
 
+## Installation via Composer
+
+#### Follow the below steps and run each command from the shop root directory
+ ##### 1. Run the below command to install the payment module
+ ```
+ composer require novalnet/module-payment
+ ```
+ ##### 2. Run the below command to upgrade the payment module
+ ```
+ php bin/magento setup:upgrade
+ ```
+ ##### 3. Run the below command to re-compile the payment module
+ ```
+ php bin/magento setup:di:compile
+ ```
+ ##### 4. Run the below command to deploy static-content files like (images, CSS, templates and js files)
+ ```
+ php bin/magento setup:static-content:deploy -f
+ ```
+
 ## Documentation & Support
 For more information about the Magento 2 Hyvä Integration by Novalnet, please get in touch with us: <a href="mailto:sales@novalnet.de"> sales@novalnet.de </a> or +49 89 9230683-20<br>
 
