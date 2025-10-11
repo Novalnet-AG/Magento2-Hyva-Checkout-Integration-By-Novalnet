@@ -10,7 +10,6 @@
     ],
     "require": {
     "magento/framework": "*",
-    "novalnet/module-payment": ">=13.4.0"
   },
     "autoload": {
         "files": [ "registration.php" ],
