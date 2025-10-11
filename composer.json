@@ -9,7 +9,7 @@
         "AFL-3.0"
     ],
     "require": {
-    "magento/framework": "*",
+    "magento/framework": "*"
   },
     "autoload": {
         "files": [ "registration.php" ],
