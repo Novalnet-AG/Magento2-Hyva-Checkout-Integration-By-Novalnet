@@ -26,7 +26,7 @@ For details on the base functionality of Magento 2 payment gateway. refer to htt
 
 # Requirements
 The extension has been tested on a Magento environment with
-* Magento 13.4.0
+* Novalnet Payment Module 13.4.0
 * PHP 8.2, 8.3 and 8.4
 * Magento 2.4.8-p2
 * Hyvä Theme 1.3.15, 1.3.16 and 1.3.17
@@ -63,19 +63,23 @@ The extension has been tested on a Magento environment with
 ## Installation via Composer
 
 #### Follow the below steps and run each command from the shop root directory
- ##### 1. Run the below command to install the payment module
+ ##### 1. Run the below command to install the module
  ```
- composer require novalnet/module-payment
+ composer require novalnet/hyva-checkout
  ```
- ##### 2. Run the below command to upgrade the payment module
+ ##### 2. Run the below command to enable the module
+ ```
+ php bin/magento module:enable Novalnet_HyvaCheckout
+ ```
+ ##### 3. Run the below command to upgrade the module
  ```
  php bin/magento setup:upgrade
  ```
- ##### 3. Run the below command to re-compile the payment module
+ ##### 4. Run the below command to re-compile the module
  ```
  php bin/magento setup:di:compile
  ```
- ##### 4. Run the below command to deploy static-content files like (images, CSS, templates and js files)
+ ##### 5. Run the below command to deploy static-content files like (images, CSS, templates and js files)
  ```
  php bin/magento setup:static-content:deploy -f
  ```
