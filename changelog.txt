@@ -1,0 +1,4 @@
+*** Changelog ***
+
+= 1.0.0		- 11.10.2025
+* New		- Novalnet Payments integrated for Hyvä checkouts, enabling seamless payment processing and compatibility with the Hyvä storefront
