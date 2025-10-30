@@ -15,22 +15,21 @@
 * Trusted by businesses across Europe for secure, scalable, and compliant payment processing.
 
 # About this repository
-This repository provides the Novalnet Hyvä Checkout Integration for Magento 2, enabling Novalnet Payment Gateway methods within the Hyvä Checkout plugin.
+This repository provides the Novalnet Hyvä Checkout module for Magento 2, enabling Novalnet Payment Gateway methods within the Hyvä Checkout plugin.
 
 It requires the following dependencies:
 
-- **The base Novalnet Payment Gateway module**
-- **The Hyvä Checkout plugin**
+- **The Novalnet Payment Gateway module**
+- **The Hyvä Checkout module**
 
-For details on the base functionality of Magento 2 payment gateway. refer to https://github.com/Novalnet-AG/magento2-payment-integration-novalnet
+For details on the base functionality of Magento 2 payment gateway refer to https://github.com/Novalnet-AG/magento2-payment-integration-novalnet
 
 # Requirements
 The extension has been tested on a Magento environment with
 * Novalnet Payment Module 13.4.0
 * PHP 8.2, 8.3 and 8.4
-* Magento 2.4.8-p2
-* Hyvä Theme 1.3.15, 1.3.16 and 1.3.17
-* Hyvä Checkout 1.1.3
+* Magento 2.4.5-p8 - 2.4.8-p2
+* Hyvä Checkout 1.3.0 - 1.3.5
 
 # Integrated payment methods
 - Direct Debit SEPA
