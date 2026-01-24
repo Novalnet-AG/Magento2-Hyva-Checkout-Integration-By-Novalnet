@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Hyvä Themes - https://hyva.io
+* Copyright © Hyvä Themes 2020-present. All rights reserved.
+* This product is licensed per Magento install
+* See https://hyva.io/license
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<type name="Hyva\CompatModuleFallback\Model\CompatModuleRegistry">
+		<arguments>
+			<argument name="compatModules" xsi:type="array">
+				<item name="hyva-checkout-magento2-novalnetPay" xsi:type="array">
+					<item name="original_module" xsi:type="string">
+						Novalnet_Payment
+					</item>
+					<item name="compat_module" xsi:type="string">
+						Novalnet_HyvaCheckout
+					</item>
+				</item>
+			</argument>
+		</arguments>
+	</type>
+	<type name="Hyva\Checkout\Model\Magewire\Payment\PlaceOrderServiceProvider">
+		<arguments>
+			<argument name="placeOrderServiceList" xsi:type="array">
+				<item name="novalnetPay" xsi:type="object">
+					Novalnet\HyvaCheckout\Service\PlaceOrderService
+				</item>
+			</argument>
+		</arguments>
+	</type>
+</config>

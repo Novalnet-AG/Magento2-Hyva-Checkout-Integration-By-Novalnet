@@ -1,0 +1,8 @@
+*** Changelog ***
+
+= 1.0.1		- 24.01.2026
+* Fix		- Compatibility update for Magento Hyvä checkout 1.3.6
+* Enhanced	- Improved checkout payment form validation and optimized JavaScript to enhance iframe loading performance
+
+= 1.0.0		- 11.10.2025
+* New		- Novalnet Payments integrated for Hyvä checkouts, enabling seamless payment processing and compatibility with the Hyvä storefront
