@@ -26,10 +26,10 @@ For details on the base functionality of Magento 2 payment gateway refer to http
 
 # Requirements
 The extension has been tested on a Magento environment with
-* Novalnet Payment Module 13.4.1
+* Novalnet Payment Module 13.4.2
 * PHP 8.2, 8.3 and 8.4
-* Magento 2.4.5-p8 - 2.4.8-p3
-* Hyvä Checkout 1.3.0 - 1.3.8
+* Magento 2.4.5-p8 - 2.4.9
+* Hyvä Checkout 1.3.0 - 1.3.10
 
 # Integrated payment methods
 - Direct Debit SEPA
@@ -41,7 +41,7 @@ The extension has been tested on a Magento environment with
 - Prepayment
 - Invoice with payment guarantee
 - Direct Debit SEPA with payment guarantee
-- iDEAL
+- iDEAL | Wero
 - Przelewy24
 - eps
 - Instalment by Invoice
